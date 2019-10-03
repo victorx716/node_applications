@@ -1,7 +1,12 @@
-let request = require('request')
-const url = 'https://api.darksky.net/forecast/2767004c39941983ab728943b9720534/37.8267,-122.4233'
-request(url, (error, response, body) => {
-  console.log('error: ', error)
-  console.log('statuscode: ', response && response.statusCode)
-  console.log('body', body)
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
+
+geocode('Shanghai', (error, data) => {
+  console.log('error', error)
+  console.log('data', data)
+})
+
+forecast(-75.7088, 44.1545, (error, data) => {
+  console.log('Error', error)
+  console.log('Data', data)
 })
