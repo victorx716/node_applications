@@ -1,8 +1,19 @@
+const path = require('path')
+
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('hi mom')
+app.use(express.static(path.join(__dirname, '../public')))
+
+const port = process.env.port || 3000;
+
+app.get('/weather', (req, res) => {
+  res.send({
+    forecast: 'Sunny with a chance of meatballs',
+    location: 'Brooklyn, New York'
+  })
 })
 
-app.listen(3000, console.log('listening at port 3k'))
+
+
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
