@@ -10,6 +10,7 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
+const port = process.env.PORT || 3000
 // Set up Handlebars.js engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
@@ -41,7 +42,6 @@ app.get('/help', (req, res) => {
     footer: 'help by vicNYC'
   })
 })
-const port = process.env.port || 3000;
 
 app.get('/weather', (req, res) => {
   if (!req.query.address) {
