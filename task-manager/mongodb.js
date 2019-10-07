@@ -12,30 +12,19 @@ MongoClient.connect(url, {useNewUrlParser: true}, (err, client) => {
   }
   const db = client.db(dbName)
 
-  // db.collection('users').findOne({_id: new ObjectID("5d9b8b558576064de46d25b9")}, (err, user) => {
-  //   if (err) {
-  //     return console.log('could not find user')
-  //   }
-  //   console.log(user)
+  // db.collection('users').deleteMany({
+  //   age: 21
+  // }).then((result) => {
+  //   console.log(result)
+  // }).catch((err) => {
+  //   console.log(err)
   // })
 
-  // db.collection('users').find({ age: 22 }).toArray( (err, users) => {
-  //   if (err) {
-  //     return console.log('no users')
-  //   }
-  //   console.log(users)
-  // })
-  // db.collection('tasks').findOne({ _id: new ObjectID("5d9b90c8a5f7245488def3e9")}, (err, task) => {
-  //   if (err) {
-  //     return console.log('could not find task')
-  //   }
-  //   console.log(task)
-  // })
-  
-  db.collection('tasks').find({ "completed": false}).toArray((err, tasks) => {
-    if (err) {
-      return console.log('no tasks')
-    }
-    console.log(tasks)
-  });
+  db.collection('tasks').deleteOne({
+    task: "finish react course"
+  }).then((result) => {
+    console.log(result)
+  }).catch((err) => {
+    console.log(err)
+  })
 })
