@@ -44,12 +44,6 @@ app.get('/users', async (req, res) => {
 
 
 app.post('/tasks', async (req, res) => {
-  // const task = new Task(req.body)
-  // task.save().then(() => {
-  //   res.status(201).send(task)
-  // }).catch((e) => {
-  //   res.status(400).send(e)
-  // })
   const task = new Task(req.body)
   try {
     await task.save()
@@ -60,18 +54,12 @@ app.post('/tasks', async (req, res) => {
 })
 
 app.get('/tasks', async (req, res) => {
-
   try {
     const tasks = await Task.find({})
     res.status(200).send(tasks)
   } catch (e) {
     res.status(404).send()
   }
-  // Task.find({}).then((tasks) => {
-  //   res.status(200).send(tasks)
-  // }).catch((e) => {
-  //   res.status(404).send()
-  // })
 })
 
 app.get('/tasks/:id', async (req, res) => {
@@ -82,12 +70,6 @@ app.get('/tasks/:id', async (req, res) => {
   } catch (e) {
     res.status(400).send(e)
   }
-  // const _id = req.params.id
-  // Task.findById(_id).then((task) => {
-  //   res.status(200).send(task)
-  // }).catch((e) => {
-  //   res.status(400).send(e)
-  // })
 })
 
 app.listen(port, () => {
