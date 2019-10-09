@@ -26,14 +26,14 @@ const Task = require('../src/models/task')
 // })
 
 
-const deleteTaskAndCount = async (id, complete) => {
-  const task = await Task.findByIdAndDelete(id)
-  const count = await Task.countDocuments({ complete})
-  return count
-}
+// const deleteTaskAndCount = async (id, complete) => {
+//   const task = await Task.findByIdAndDelete(id)
+//   const count = await Task.countDocuments({ complete})
+//   return count
+// }
 
-deleteTaskAndCount("5d9be4447ad9751870a7b692", false).then((count) => {
-  console.log(count)
-}).catch((e) => {
-  console.log(e)
-})
+// deleteTaskAndCount("5d9be4447ad9751870a7b692", false).then((count) => {
+//   console.log(count)
+// }).catch((e) => {
+//   console.log(e)
+// })
