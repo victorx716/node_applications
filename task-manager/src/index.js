@@ -18,20 +18,14 @@ const upload = multer({
       return cb(new Error('Upload only PDFs'))
     }
     cb(undefined, true)
-
-    // cb(new Error('File must be a PDF'))
-    // cb(undefined, true)
-    // cb(undefined, false)
   }
 })
 
 app.post('/upload', upload.single('upload'), (req, res) => {
   res.send()
+}, (error, req, res, next) => {
+  res.status(400).send({error: error.message})
 })
-
-// app.post('/users/me/avatar', upload.single('upload'), (req, res) => {
-//   res.send()
-// })
 
 app.use(express.json())
 app.use(userRouter)
