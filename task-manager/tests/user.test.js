@@ -4,17 +4,7 @@ const mongoose = require('mongoose')
 const app = require('../src/app')
 const User = require('../src/models/user')
 
-const userOneId = new mongoose.Types.ObjectId()
 
-const userOne = {
-  _id: userOneId,
-  name: 'Joe',
-  email: 'Joe@joeschmoe.com',
-  password: 'mynameisnotjoe',
-  tokens: [{
-    token: jwt.sign({ _id: userOneId}, process.env.JWT_SECRET)
-  }]
-}
 
 beforeEach( async () => {
   await User.deleteMany()
@@ -89,3 +79,4 @@ test('should not delete account for unauthenticated user', async () => {
   .send()
   .expect(500)
 })
+
